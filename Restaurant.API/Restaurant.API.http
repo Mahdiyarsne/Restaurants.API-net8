@@ -4,3 +4,19 @@ GET {{Restaurant.API_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+Get {{Restaurant.API_HostAddress}}//api/restaurants
+
+###
+
+GET {{Restaurant.API_HostAddress}}/api/restaurants
+
+###
+
+GET {{Restaurant.API_HostAddress}}/api/restaurants/1
+
+###
+
+@id=0
+GET {{Restaurant.API_HostAddress}}/api/restaurants/{{id}}
+
+###
