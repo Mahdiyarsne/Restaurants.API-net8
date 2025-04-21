@@ -1,4 +1,4 @@
-@Restaurant.API_HostAddress = http://localhost:5055
+﻿@Restaurant.API_HostAddress = http://localhost:5055
 
 GET {{Restaurant.API_HostAddress}}/weatherforecast/
 Accept: application/json
@@ -20,3 +20,17 @@ GET {{Restaurant.API_HostAddress}}/api/restaurants/1
 GET {{Restaurant.API_HostAddress}}/api/restaurants/{{id}}
 
 ###
+POST {{Restaurant.API_HostAddress}}/api/restaurants
+Content-type: application/json ; charset=utf-8
+
+{
+     "Name": "Spicy Delights",
+    "Description":"A Culinary experince like no other",
+    "Category":"Fine Dining",
+    "HasDelivery":true,
+    "ContactEmail":"info@sabdiz.com",
+    "ContactNumber":"666-666-66",
+    "City":"mashhad",
+    "Street":"vakil abade 20",
+    "PostalCode":"12345"
+}
