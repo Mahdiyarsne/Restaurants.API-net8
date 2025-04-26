@@ -8,12 +8,13 @@ using Restaurants.Infrastucture.Seeders;
 
 namespace Restaurants.Infrastucture.Extensions;
 
-public static class ServiceCollectionExtenson 
+public static class ServiceCollectionExtensهon
 {
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<RestautantDbContext>(options =>
           options.UseSqlServer(configuration.GetConnectionString("RestaurantDb"))
+          .EnableSensitiveDataLogging()
         );
 
         services.AddScoped<IRestaurantSeeder, RestaurantSeeder>();

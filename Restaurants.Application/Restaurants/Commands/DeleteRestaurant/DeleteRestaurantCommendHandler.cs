@@ -10,7 +10,7 @@ public class DeleteRestaurantCommendHandler(ILogger<DeleteRestaurantCommendHandl
 {
     public async Task<bool> Handle(DeleteRestaurantCommend request, CancellationToken cancellationToken)
     {
-        logger.LogInformation($"Deleting restaurant with id :{request.Id}");
+        logger.LogInformation("Deleting restaurant with id :{RestaurantId}",request.Id);
         var restaurant = await restaurantRepository.GetByIdAsync(request.Id);
 
         if (restaurant is null)
