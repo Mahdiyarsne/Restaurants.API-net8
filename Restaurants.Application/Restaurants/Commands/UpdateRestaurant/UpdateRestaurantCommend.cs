@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Restaurants.Application.Restaurants.Commands.UpdateRestaurant;
 
- public class UpdateRestaurantCommend: IRequest<bool>
+ public class UpdateRestaurantCommend: IRequest
 {
     public int Id { get; set; }
 

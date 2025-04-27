@@ -12,7 +12,7 @@ GET {{Restaurant.API_HostAddress}}/api/restaurants
 
 ###
 
-GET {{Restaurant.API_HostAddress}}/api/restaurants/1
+GET {{Restaurant.API_HostAddress}}/api/restaurants/2005
 
 ###
 

@@ -8,9 +8,9 @@ using Restaurants.Application.Restaurants.Queries.GetRestaurantById;
 
 namespace Restaurant.API.Controllers
 {
-    [ApiController]
+
     [Route("api/restaurants")]
-    public class RestaurantsController(IMediator mediator) : ControllerBase
+    public class RestaurantsController(IMediator mediator) :BaseApiController
     {
         [HttpGet]
         public async Task<IActionResult> GetAll()
@@ -24,10 +24,6 @@ namespace Restaurant.API.Controllers
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var restaurant = await mediator.Send(new GetRestaurantByIdQuery(id));
-            if (restaurant is null)
-            {
-                return NotFound();
-            }
 
             return Ok(restaurant);
         }
@@ -42,23 +38,20 @@ namespace Restaurant.API.Controllers
 
 
         [HttpPatch("{id}")]
-        public async Task<IActionResult>UpdateResturant([FromRoute] int id, UpdateRestaurantCommend commend)
+        public async Task<IActionResult> UpdateResturant([FromRoute] int id, UpdateRestaurantCommend commend)
         {
             commend.Id = id;
-            var isUpdated = await mediator.Send(commend);
-            if (isUpdated)
-                return NoContent();
+            await mediator.Send(commend);
 
-            return NotFound();
+            return NoContent();
+ 
         }
 
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteResturant([FromRoute] int id)
         {
-            var isDeleted  = await mediator.Send(new DeleteRestaurantCommend(id));
-            if (isDeleted)
-              return NoContent();
+            await mediator.Send(new DeleteRestaurantCommend(id));
 
             return NotFound();
         }
