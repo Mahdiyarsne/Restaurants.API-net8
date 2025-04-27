@@ -7,12 +7,12 @@ using Restaurants.Domain.Repositories;
 
 namespace Restaurants.Application.Restaurants.Commands.UpdateRestaurant;
 
-public class UpdateRestaurantCommendHandler(ILogger<UpdateRestaurantCommendHandler> logger,
+public class UpdateRestaurantCommandHandler(ILogger<UpdateRestaurantCommandHandler> logger,
     IRestaurantRepository restaurantRepository,
     IMapper mapper
-    ) : IRequestHandler<UpdateRestaurantCommend>
+    ) : IRequestHandler<UpdateRestaurantCommand>
 {
-    public async Task Handle(UpdateRestaurantCommend request, CancellationToken cancellationToken)
+    public async Task Handle(UpdateRestaurantCommand request, CancellationToken cancellationToken)
     {
         logger.LogInformation("Updating restaurant with id :{RestaurantId} with {@UpdateRestaurant}", request.Id,request);
         var restaurant = await restaurantRepository.GetByIdAsync(request.Id)

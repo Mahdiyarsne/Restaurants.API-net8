@@ -6,7 +6,7 @@ using Restaurants.Domain.Repositories;
 
 namespace Restaurants.Application.Restaurants.Commands.DeleteRestaurant;
 
-public class DeleteRestaurantCommendHandler(ILogger<DeleteRestaurantCommendHandler> logger,
+public class DeleteRestaurantCommandHandler(ILogger<DeleteRestaurantCommandHandler> logger,
     IRestaurantRepository restaurantRepository
     ) : IRequestHandler<DeleteRestaurantCommend>
 {

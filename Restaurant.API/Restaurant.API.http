@@ -33,3 +33,11 @@ Contect-Type:application/json
     "PostalCode": "10-010",
 
 }
+
+###
+
+POST {{Restaurant.API_HostAddress}}/api/restaurants/{restaurantId}/dishes
+
+{
+
+}

@@ -6,55 +6,54 @@ using Restaurants.Application.Restaurants.Commands.UpdateRestaurant;
 using Restaurants.Application.Restaurants.Queries.GetAllRestaurants;
 using Restaurants.Application.Restaurants.Queries.GetRestaurantById;
 
-namespace Restaurant.API.Controllers
+namespace Restaurant.API.Controllers;
+
+
+[Route("api/restaurants")]
+public class RestaurantsController(IMediator mediator) :BaseApiController
 {
-
-    [Route("api/restaurants")]
-    public class RestaurantsController(IMediator mediator) :BaseApiController
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
     {
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
-        {
-            var restaurants = await mediator.Send(new GetAllRestaurantsQuery());
+        var restaurants = await mediator.Send(new GetAllRestaurantsQuery());
 
-            return Ok(restaurants);
-        }
+        return Ok(restaurants);
+    }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById([FromRoute] int id)
-        {
-            var restaurant = await mediator.Send(new GetRestaurantByIdQuery(id));
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById([FromRoute] int id)
+    {
+        var restaurant = await mediator.Send(new GetRestaurantByIdQuery(id));
 
-            return Ok(restaurant);
-        }
+        return Ok(restaurant);
+    }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateRestaurant([FromBody] CreateRestaurantCommand command)
-        {
-            int id = await mediator.Send(command);
+    [HttpPost]
+    public async Task<IActionResult> CreateRestaurant([FromBody] CreateRestaurantCommand command)
+    {
+        int id = await mediator.Send(command);
 
-            return CreatedAtAction(nameof(GetById), new { id }, null);
-        }
+        return CreatedAtAction(nameof(GetById), new { id }, null);
+    }
 
 
-        [HttpPatch("{id}")]
-        public async Task<IActionResult> UpdateResturant([FromRoute] int id, UpdateRestaurantCommend commend)
-        {
-            commend.Id = id;
-            await mediator.Send(commend);
+    [HttpPatch("{id}")]
+    public async Task<IActionResult> UpdateResturant([FromRoute] int id, UpdateRestaurantCommand commend)
+    {
+        commend.Id = id;
+        await mediator.Send(commend);
 
-            return NoContent();
- 
-        }
-
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteResturant([FromRoute] int id)
-        {
-            await mediator.Send(new DeleteRestaurantCommend(id));
-
-            return NotFound();
-        }
+        return NoContent();
 
     }
+
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteResturant([FromRoute] int id)
+    {
+        await mediator.Send(new DeleteRestaurantCommend(id));
+
+        return NotFound();
+    }
+
 }

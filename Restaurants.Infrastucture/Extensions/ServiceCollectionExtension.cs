@@ -17,6 +17,7 @@ public static class ServiceCollectionExtensهon
           .EnableSensitiveDataLogging()
         );
 
+        services.AddScoped<IDishRepository, DishRepository>();
         services.AddScoped<IRestaurantSeeder, RestaurantSeeder>();
         services.AddScoped<IRestaurantRepository, RestaurantRepository>();
 

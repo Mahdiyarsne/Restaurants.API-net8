@@ -2,9 +2,9 @@
 
 namespace Restaurants.Application.Restaurants.Commands.UpdateRestaurant
 {
-    public class UpdateRestaurantCommendValidation : AbstractValidator<UpdateRestaurantCommend>
+    public class UpdateRestaurantCommandValidation : AbstractValidator<UpdateRestaurantCommand>
     {
-        public UpdateRestaurantCommendValidation()
+        public UpdateRestaurantCommandValidation()
         {
             RuleFor(c => c.Name)
                 .Length(3, 100); 
