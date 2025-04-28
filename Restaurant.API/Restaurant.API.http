@@ -8,16 +8,16 @@ Get {{Restaurant.API_HostAddress}}//api/restaurants
 
 ###
 
-GET {{Restaurant.API_HostAddress}}/api/restaurants
+GET {{Restaurant.API_HostAddress}}/api/restaurants/2
 
 ###
 
-GET {{Restaurant.API_HostAddress}}/api/restaurants/2005
+GET {{Restaurant.API_HostAddress}}/api/restaurants/1/dishes
 
 ###
 
 @id=0
-GET {{Restaurant.API_HostAddress}}/api/restaurants/{{id}}
+GET {{Restaurant.API_HostAddress}}/api/restaurants/1004/dishes/   
 
 ###
 POST {{Restaurant.API_HostAddress}}/api/restaurants
@@ -36,8 +36,11 @@ Contect-Type:application/json
 
 ###
 
-POST {{Restaurant.API_HostAddress}}/api/restaurants/{restaurantId}/dishes
+POST {{Restaurant.API_HostAddress}}/api/restaurants/1003/dishes
+Contect-Type:application/json
 
 {
+    "Name": "Spicy Delights updated",
+    "Description":"Updated successfuly"
 
 }
