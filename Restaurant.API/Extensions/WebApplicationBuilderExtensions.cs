@@ -8,7 +8,7 @@ public static class WebApplicationBuilderExtensions
 {
     public static void AddPresntation(this WebApplicationBuilder builder)
     {
-
+        builder.Services.AddAuthentication();
         builder.Services.AddControllers();
         builder.Services.AddSwaggerGen(c =>
         {
@@ -19,8 +19,8 @@ public static class WebApplicationBuilderExtensions
             });
 
             c.AddSecurityRequirement(new OpenApiSecurityRequirement
-{
-    {
+            {
+            {
         new OpenApiSecurityScheme
         {
             Reference = new OpenApiReference{ Type  = ReferenceType.SecurityScheme, Id ="bearerAuth"}
@@ -37,3 +37,4 @@ public static class WebApplicationBuilderExtensions
        .ReadFrom.Configuration(context.Configuration));
     }
 }
+ 
